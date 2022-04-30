@@ -105,5 +105,4 @@ with products_data:
    
 with st.sidebar:
     st.title("Contact Us")
-    st.markdown("Type your email here and we will contact you soon!")
-    st.text_input("example@email.com")
+    st.text_input("Type your email here and we will contact you soon!")
