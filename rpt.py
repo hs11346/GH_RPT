@@ -5,6 +5,7 @@
 import pyairtable as py
 import pandas as pd
 import numpy as np
+import streamlit as st
 
 # arg1 = API key, arg2 = table key, arg3 = table name
 
@@ -79,7 +80,7 @@ products.set_index("Product Name")
 #Creating Webapp
 #--------
 
-import streamlit as st
+
 
 header = st.container()
 with header:
