@@ -102,3 +102,8 @@ products_data = st.container()
 with products_data:
     st.subheader("Products Database")
     st.write(products.head().drop(columns = "id"))
+   
+with st.sidebar:
+    st.title("Contact Us")
+    st.markdown("Type your email here and we will contact you soon!")
+    st.text_input("example@email.com")
