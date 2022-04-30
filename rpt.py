@@ -8,7 +8,7 @@ import numpy as np
 
 # arg1 = API key, arg2 = table key, arg3 = table name
 
-table = py.Table("keyEP820cEIv0tZfJ","appVjXnuY1AZLe9HC","List of Suppliers")
+table = py.Table(st.secrets["api_key"],st.secrets["table_key"],"List of Suppliers")
 table = table.all()
 
 list = []
@@ -40,7 +40,7 @@ def make_pair(series):
     id_dict[series['id']] = series["Company"]
 supplier.reset_index().apply(make_pair,axis = 1)
 
-table2 = py.Table("keyEP820cEIv0tZfJ","appVjXnuY1AZLe9HC","Products Database")
+table2 = py.Table(st.secrets["api_key"],st.secrets["table_key"],"Products Database")
 table2 = table2.all()
 
 list = []
