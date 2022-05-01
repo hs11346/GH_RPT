@@ -163,9 +163,14 @@ with description:
     st.subheader("Company Details")
     comp = st.selectbox("Select Company", options=list(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index.values))
     st.markdown(supplier["Company description"].loc[comp])
+    st.markdown(supplier["Description of products/services"].loc[comp])
     st.markdown("\nProduct Categories include:")
     st.markdown(" ".join(supplier["Type of Products"].loc[comp]))
 
+ihg_graph = st.container()
+with ihg_graph:
+    st.markdown("\n")
+    st.subheader("IHG Score comparison graphs")
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 with st.sidebar:
     st.title("Contact Us")
