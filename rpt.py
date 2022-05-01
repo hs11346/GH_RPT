@@ -9,8 +9,6 @@ import streamlit as st
 import yagmail as yg
 import re
 
-from keyring import get_keyring
-get_keyring()
 # arg1 = API key, arg2 = table key, arg3 = table name
 
 
