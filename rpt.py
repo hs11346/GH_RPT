@@ -156,7 +156,7 @@ with supplier_data:
         ihg = st.slider("Select minimum IHG score",0,100,0,1)
     #word = st.text_input("Any comments?","Hi")
     with right:
-        st.write(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index())
+        st.write(pd.DataFrame(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].Index_tolist()))
     st.markdown("\n")
 
 description = st.container()
