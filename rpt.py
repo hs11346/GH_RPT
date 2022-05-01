@@ -177,7 +177,7 @@ with st.sidebar:
         if re.fullmatch(regex, email):
             user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets['pw'])
             user.send(to=email,subject = 'Webapp trial email from '+org, contents = message)
-            st.markdown("Error: Invalid Email")
+            st.markdown("Received, thanks!")
         else:
             st.markdown("Error: Invalid Email")
         
