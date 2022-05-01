@@ -165,7 +165,7 @@ with description:
     st.markdown(supplier["Company description"].loc[comp])
     st.markdown("**Description of Product:**\n"+"* "+supplier["Description of products/services"].loc[comp])
     st.markdown("\nProduct Categories include:")
-    st.markdown("\n* ".join(supplier["Type of Products"].loc[comp]))
+    st.markdown("*"+"\n* ".join(supplier["Type of Products"].loc[comp]))
 
 ihg_graph = st.container()
 with ihg_graph:
