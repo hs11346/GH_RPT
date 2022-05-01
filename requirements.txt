@@ -3,4 +3,4 @@ pandas==1.4.2
 pyairtable==1.1.0
 streamlit==1.8.1
 yagmail==0.15.277
-keyring-23.5.0
+keyring==23.5.0
