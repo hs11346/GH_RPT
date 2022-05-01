@@ -175,7 +175,7 @@ with st.sidebar:
     send_button = st.button("Send")
     if send_button:
         if re.fullmatch(regex, email):
-            user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets["pw"])
+            user = yg.SMTP(user='hbgwjti@gmail.com',password = 'qeqdgdbmb131415ABC8816002015071711')
             user.send(to=email,subject = 'Webapp trial email from '+org, contents = message)
             org, email, message = st.empty()
         else:
