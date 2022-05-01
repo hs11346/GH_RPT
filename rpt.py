@@ -11,9 +11,6 @@ import re
 
 # arg1 = API key, arg2 = table key, arg3 = table name
 
-api_key = "keyEP820cEIv0tZfJ"
-table_key = "appVjXnuY1AZLe9HC"
-
 @st.cache(allow_output_mutation=True)
 def tableX():
     return py.Table(api_key,table_key,"List of Suppliers")
@@ -62,7 +59,7 @@ supplier.reset_index().apply(make_pair,axis = 1)
 
 @st.cache(allow_output_mutation=True)
 def table_2():
-    return py.Table("keyEP820cEIv0tZfJ","appVjXnuY1AZLe9HC","Products Database")
+    return py.Table(api_key,table_key,"Products Database")
 
 table2 = table_2()
 table2 = table2.all()
@@ -178,7 +175,7 @@ with st.sidebar:
     send_button = st.button("Send")
     if send_button:
         if re.fullmatch(regex, email):
-            user = yg.SMTP(user='hbgwjti@gmail.com',password = 'qeqdgdbmb131415ABC8816002015071711')
+            user = yg.SMTP(user='hbgwjti@gmail.com',password = pw)
             user.send(to=email,subject = 'Webapp trial email from '+org, contents = message)
             org, email, message = st.empty()
         else:
