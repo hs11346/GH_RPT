@@ -172,8 +172,10 @@ ihg_graph = st.container()
 with ihg_graph:
     st.markdown("\n")
     st.subheader("IHG Score comparison graphs")
+    fig = plt.figure(figsize=(8, 6))
+    plt.title("Global Distribution of IHG Scores")
     sns.displot(x=supplier["Score Ranked by the IHG"])
-    st.pyplot()
+    st.pyplot(fig)
     
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 with st.sidebar:
