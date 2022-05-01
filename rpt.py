@@ -186,7 +186,7 @@ with st.sidebar:
             GREEN Hospitality
             
             ***MOCK AUTOMATED MESSAGE FROM MY PERSONAL ACCOUNT***
-            """)
+            """.format(org))
             st.markdown("Received, thanks!")
         else:
             st.markdown("Error: Invalid Email")
