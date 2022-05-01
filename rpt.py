@@ -155,7 +155,7 @@ with supplier_data:
         ihg = st.slider("Select minimum IHG score",0,100,0,1)
     #word = st.text_input("Any comments?","Hi")
     with right:
-        st.write(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) or (supplier[Score Ranked by the IHG"]!=supplier[Score Ranked by the IHG"])) & (supplier["Country"]==country)])
+        st.write(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) or (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)])
     st.markdown("\n")
 
 description = st.container()
