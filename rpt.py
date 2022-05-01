@@ -9,7 +9,7 @@ import streamlit as st
 import yagmail as yg
 import re
 import seaborn as sns
-
+import matplotlib.pyplot as plt
 # arg1 = API key, arg2 = table key, arg3 = table name
 
 
