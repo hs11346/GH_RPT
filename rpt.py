@@ -172,7 +172,7 @@ ihg_graph = st.container()
 with ihg_graph:
     st.markdown("\n")
     st.subheader("IHG Score comparison graphs")
-    sns.displot(x=supplier["Score Ranked by the IHG"]).display()
+    sns.displot(x=supplier["Score Ranked by the IHG"])
     st.pyplot()
     
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
