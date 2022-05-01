@@ -8,6 +8,7 @@ import numpy as np
 import streamlit as st
 import yagmail as yg
 import re
+import seaborn as sns
 
 # arg1 = API key, arg2 = table key, arg3 = table name
 
@@ -171,6 +172,10 @@ ihg_graph = st.container()
 with ihg_graph:
     st.markdown("\n")
     st.subheader("IHG Score comparison graphs")
+    fig = plt.figure(figsize=(10, 4))
+    sns.displot(x=supplier["Score Ranked by the IHG"])
+    st.pyplot(fig)
+    
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 with st.sidebar:
     st.title("Contact Us")
