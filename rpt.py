@@ -178,7 +178,15 @@ with st.sidebar:
     if send_button:
         if re.fullmatch(regex, email):
             user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets['pw'])
-            user.send(to=email,subject = 'Webapp trial email from '+org, contents = message)
+            user.send(to=email,subject = 'Enquiry Recieved (noreply)', contents = """
+            To {},
+            We have recieved your enquiry, and we will get back to you soon!
+            
+            Best Regards,
+            GREEN Hospitality
+            
+            ***MOCK AUTOMATED MESSAGE FROM MY PERSONAL ACCOUNT***
+            """)
             st.markdown("Received, thanks!")
         else:
             st.markdown("Error: Invalid Email")
