@@ -174,7 +174,7 @@ with ihg_graph:
     st.subheader("IHG Score comparison graphs")
     fig = plt.figure(figsize=(8, 6))
     plt.title("Global Distribution of IHG Scores")
-    sns.displot(x=supplier["Score Ranked by the IHG"].dropna(),data=supplier)
+    sns.displot(x="Score Ranked by the IHG",data=supplier)
     st.pyplot(fig)
     
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
