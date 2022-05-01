@@ -156,7 +156,7 @@ with supplier_data:
         ihg = st.slider("Select minimum IHG score",0,100,0,1)
     #word = st.text_input("Any comments?","Hi")
     with right:
-        st.write(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)])
+        st.write(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index())
     st.markdown("\n")
 
 description = st.container()
@@ -167,15 +167,6 @@ with description:
     st.markdown("**Description of Product:**\n"+"* "+supplier["Description of products/services"].loc[comp])
     st.markdown("\nProduct Categories include:")
     st.markdown("* "+"\n* ".join(supplier["Type of Products"].loc[comp]))
-
-ihg_graph = st.container()
-with ihg_graph:
-    st.markdown("\n")
-    st.subheader("IHG Score comparison graphs")
-    fig = plt.figure(figsize=(8, 6))
-    plt.title("Global Distribution of IHG Scores")
-    sns.displot(x="Score Ranked by the IHG",data=supplier)
-    st.pyplot(fig)
     
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 with st.sidebar:
