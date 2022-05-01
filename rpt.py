@@ -165,7 +165,7 @@ with description:
     st.markdown(supplier["Company description"].loc[comp])
     st.markdown("\nProduct Categories include:")
     st.markdown(" ".join(supplier["Type of Products"].loc[comp]))
-yg.register('hbgwjti@gmail.com', st.secrets['pw'])
+
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 with st.sidebar:
     st.title("Contact Us")
