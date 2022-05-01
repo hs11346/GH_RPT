@@ -11,7 +11,7 @@ import re
 
 # arg1 = API key, arg2 = table key, arg3 = table name
 
-@st.cache(allow_output_mutation=True)
+
 def tableX():
     return py.Table(st.secrets["api_key"],st.secrets["table_key"],"List of Suppliers")
 table = tableX()
@@ -57,7 +57,7 @@ def make_pair(series):
     id_dict[series['id']] = series["Company"]
 supplier.reset_index().apply(make_pair,axis = 1)
 
-@st.cache(allow_output_mutation=True)
+
 def table_2():
     return py.Table(st.secrets["api_key"],st.secrets["table_key"],"Products Database")
 
@@ -99,7 +99,7 @@ products["Photo"] = products['Photo'].apply(photo)
 #products.set_index("Company")
 products.set_index("Product Name")
 
-@st.cache(allow_output_mutation=True)
+
 def table_3():
     return py.Table(st.secrets["api_key"],st.secrets['table_key'],"List of Country")
 table3 = table_3()
