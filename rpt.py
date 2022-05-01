@@ -163,7 +163,7 @@ with description:
     st.subheader("Company Details")
     comp = st.selectbox("Select Company", options=list(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index.values))
     st.markdown(supplier["Company description"].loc[comp])
-    st.markdown(supplier["Description of products/services"].loc[comp])
+    st.markdown("**Description of Product:** :\n"+"* "+supplier["Description of products/services"].loc[comp])
     st.markdown("\nProduct Categories include:")
     st.markdown(" ".join(supplier["Type of Products"].loc[comp]))
 
