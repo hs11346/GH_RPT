@@ -157,7 +157,9 @@ products["Updated Category"]=products["Updated Category"].apply(cate_dict)
 #--------
 #Creating Webapp
 #--------
-
+PAGE_CONFIG = {page_title = ""
+               initial_sidebar_state='expanded'
+              }
 
 
 header = st.container()
