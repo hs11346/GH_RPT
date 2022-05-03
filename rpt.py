@@ -147,49 +147,51 @@ with header:
     st.markdown("* To demonstrate the viability of a connected webapp")
     st.markdown("* To enhance user-friendliness")
 
-supplier_data = st.container()
-with supplier_data:
-    st.subheader("Supplier Database")
-    left, right = st.columns(2)
-    with left:
-        country = st.selectbox("Select Country of Copmany", options = [x for x in supplier["Country"].dropna().unique() if x == x])
-        ihg = st.slider("Select minimum IHG score",0,100,0,1)
-    #word = st.text_input("Any comments?","Hi")
-    with right:
-        st.write(pd.DataFrame(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index.to_list(),columns = ["Name"]))
-    st.markdown("\n")
+pages = st.selectbox("Select Page",options = ["Supplier Database","Products Databse"])
+if pages == "Supplier Database":
+    supplier_data = st.container()
+    with supplier_data:
+        st.subheader("Supplier Database")
+        left, right = st.columns(2)
+        with left:
+            country = st.selectbox("Select Country of Copmany", options = [x for x in supplier["Country"].dropna().unique() if x == x])
+            ihg = st.slider("Select minimum IHG score",0,100,0,1)
+        #word = st.text_input("Any comments?","Hi")
+        with right:
+            st.write(pd.DataFrame(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index.to_list(),columns = ["Name"]))
+        st.markdown("\n")
 
-description = st.container()
-with description:
-    st.subheader("Company Details")
-    comp = st.selectbox("Select Company", options=list(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index.values))
-    st.markdown(supplier["Company description"].loc[comp])
-    st.markdown("**Description of Product:**\n"+"* "+supplier["Description of products/services"].loc[comp])
-    st.markdown("\nProduct Categories include:")
-    st.markdown("* "+"\n* ".join(supplier["Type of Products"].loc[comp]))
+    description = st.container()
+    with description:
+        st.subheader("Company Details")
+        comp = st.selectbox("Select Company", options=list(supplier.drop(columns = "id")[((supplier["Score Ranked by the IHG"]>=ihg) | (supplier["Score Ranked by the IHG"]!=supplier["Score Ranked by the IHG"])) & (supplier["Country"]==country)].index.values))
+        st.markdown(supplier["Company description"].loc[comp])
+        st.markdown("**Description of Product:**\n"+"* "+supplier["Description of products/services"].loc[comp])
+        st.markdown("\nProduct Categories include:")
+        st.markdown("* "+"\n* ".join(supplier["Type of Products"].loc[comp]))
     
-regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-with st.sidebar:
-    st.title("Contact Us")
-    org = st.text_input("Your Organisation")
-    email = st.text_input("Email")
-    message = st.text_input("Your Message")
-    send_button = st.button("Send")
-    if send_button:
-        if re.fullmatch(regex, email):
-            user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets['pw'])
-            user.send(to=email,subject = 'Enquiry Recieved (noreply)', contents = """
-            To {},
-            We have recieved your enquiry, and we will get back to you soon!
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    with st.sidebar:
+        st.title("Contact Us")
+        org = st.text_input("Your Organisation")
+        email = st.text_input("Email")
+        message = st.text_input("Your Message")
+        send_button = st.button("Send")
+        if send_button:
+            if re.fullmatch(regex, email):
+                user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets['pw'])
+                user.send(to=email,subject = 'Enquiry Recieved (noreply)', contents = """
+                To {},
+                We have recieved your enquiry, and we will get back to you soon!
             
-            Best Regards,
-            GREEN Hospitality
+                Best Regards,
+                GREEN Hospitality
             
-            ***MOCK AUTOMATED MESSAGE FROM MY PERSONAL ACCOUNT***
-            """.format(org))
-            st.markdown("Received, thanks!")
-        else:
-            st.markdown("Error: Invalid Email")
+                ***MOCK AUTOMATED MESSAGE FROM MY PERSONAL ACCOUNT***
+                """.format(org))
+                st.markdown("Received, thanks!")
+            else:
+                st.markdown("Error: Invalid Email")
         
 
 
