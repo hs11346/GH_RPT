@@ -157,10 +157,16 @@ products["Updated Category"]=products["Updated Category"].apply(cate_dict)
 #--------
 #Creating Webapp
 #--------
-PAGE_CONFIG = {"page_title": "GREEN Hospitality RPT",
-               "initial_sidebar_state":'expanded'
-                "menu_items":{"About":"Responsible Procurement Tool by See Yat Nam Harry"}}
-st.set_page_config(PAGE_CONFIG)
+st.set_page_config(
+     page_title="GH_RPT App",
+     layout="wide",
+     initial_sidebar_state="expanded",
+     menu_items={
+         'Get Help': 'https://www.greenhospitality.io',
+         'Report a bug': "https://www.greenhospitality.io/",
+         'About': "Responsible Procurement Tool webapp developed by Harry"
+     }
+ )
 
 header = st.container()
 with header:
