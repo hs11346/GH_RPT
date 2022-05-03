@@ -195,7 +195,7 @@ if pages == "Supplier Database":
         st.markdown("\nProduct Categories include:")
         st.markdown("* "+"\n* ".join(supplier["Type of Products"].loc[comp]))
     
-    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
   
 elif pages == 'Products Databse':
     head_container = st.container()
@@ -218,6 +218,14 @@ elif pages == 'Products Databse':
             st.markdown("\nContact Method:")
             if products.set_index("Product Name")["Contact email"].loc[product_name] == products.set_index("Product Name")["Contact email"].loc[product_name]:
                 st.markdown(products.set_index("Product Name")["Contact email"].loc[product_name])
+                email = products.set_index("Product Name")["Contact email"].loc[product_name]
+                quick_container = st.container()
+                with quick_container:
+                    st.header("Quick Contact")
+                    org = st.text_input("Your Organisation")
+                    email = st.text_input("Your Receiving Email")
+                    message = st.text_input("Your Message")
+            
             else:
                 st.markdown("Information unavailable")
                 
