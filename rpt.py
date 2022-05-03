@@ -199,7 +199,7 @@ elif pages == 'Products Databse':
         st.write(products)
         product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
         st.subheader(product_name) 
-        image,description_2 = st.column(2)
+        image,description_2 = st.columns(2)
         with image:
             st.image(products.set_index("Product Name")["Photo"].loc[product_name]
                         ,caption = "Image", use_column_width = True)
