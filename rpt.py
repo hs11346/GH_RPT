@@ -247,6 +247,6 @@ with st.sidebar:
             GREEN Hospitality Responsible Procurement Tool Team               
             """.format(org))
             st.markdown("Received, thanks!")
-         else:
+        else:
             st.markdown("Error: Invalid Email")                
 
