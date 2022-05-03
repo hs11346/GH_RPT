@@ -148,6 +148,7 @@ with header:
     st.markdown("* To enhance user-friendliness")
 
 pages = st.selectbox("Select Page",options = ["Supplier Database","Products Databse"])
+st.markdown("\n")
 if pages == "Supplier Database":
     supplier_data = st.container()
     with supplier_data:
@@ -198,7 +199,7 @@ elif pages == 'Products Databse':
         st.subheader("Product Databse")
         st.write(products)
         product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
-        st.subheader(product_name) 
+        st.subheader(product_name+"\n") 
         image,description_2 = st.columns(2)
         with image:
             if products.set_index("Product Name")["Photo"].loc[product_name] == products.set_index("Product Name")["Photo"].loc[product_name]:
@@ -206,8 +207,12 @@ elif pages == 'Products Databse':
             else:
                 st.markdown("No photo available")
         with description_2:
-            st.markdown(products.set_index("Product Name")["Company"].loc[product_name])
-            
-    
+            st.subheader("Product Description\n")
+            st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
+            st.markdown("\nContact Method:")
+            if products.set_index("Product Name")["Contact email"].loc[product_name] == products.set_index("Product Name")["Contact email"].loc[product_name]:
+                st.markdown(products.set_index("Product Name")["Contact email"].loc[product_name])
+            else:
+                st.markdown("Information unavailable")
 
 
