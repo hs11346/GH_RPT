@@ -193,13 +193,19 @@ if pages == "Supplier Database":
             else:
                 st.markdown("Error: Invalid Email")
 elif pages == 'Products Databse':
-    st.write(products)
-    product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
-    st.title(product_name)
-    #st.markdown("![Alt Text]({})".format(products.set_index("Product Name")["Photo"].loc[product_name]))
-    st.image(products.set_index("Product Name")["Photo"].loc[product_name]
-                ,caption = "Image")
-
+    head_container = st.container()
+    with head_container:
+        st.subheader("Product Databse")
+        st.write(products)
+        product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
+        st.subheader(product_name) 
+        image,description_2 = st.column(2)
+        with image:
+            st.image(products.set_index("Product Name")["Photo"].loc[product_name]
+                        ,caption = "Image", use_column_width = True)
+        with description_2:
+            st.markdown(products.set_index("Product Name")["Company"].loc[product_name])
+            
     
 
 
