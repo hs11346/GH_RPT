@@ -221,7 +221,7 @@ elif pages == 'Products Databse':
     head_container = st.container()
     with head_container:
         st.subheader("Product Databse")
-        product_category = st.selectbox("Category of Product", options = [x for x in products["Updated Category"].unique if x == x])
+        product_category = st.selectbox("Category of Product", options = [x for x in products["Updated Category"].unique() if x == x])
         st.write(products[products["Updated Category"]==product_category])
         product_name = st.selectbox("Select product", options = [x for x in products[products["Updated Category"]==product_category]["Product Name"] if x == x])
         st.subheader(product_name+"\n")
