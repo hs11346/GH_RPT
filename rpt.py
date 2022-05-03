@@ -201,8 +201,10 @@ elif pages == 'Products Databse':
         st.subheader(product_name) 
         image,description_2 = st.columns(2)
         with image:
-            st.image(products.set_index("Product Name")["Photo"].loc[product_name]
-                        ,caption = "Image", use_column_width = True)
+            if products.set_index("Product Name")["Photo"].loc[product_name] == products.set_index("Product Name")["Photo"].loc[product_name]:
+                st.image(products.set_index("Product Name")["Photo"].loc[product_name],caption = "Image", use_column_width = True)
+            else:
+                st.markdown("No photo available")
         with description_2:
             st.markdown(products.set_index("Product Name")["Company"].loc[product_name])
             
