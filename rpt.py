@@ -132,7 +132,28 @@ country.apply(make_pair_country,axis = 1)
 supplier["Country"] = supplier["Country"].apply(lambda x: x[0] if x == x else x)
 supplier = supplier.replace(id_dict2,id_value2).sort_values("Country")
 #supplier["Country"] = supplier["Country"].fillna("Unspecified")
-
+def cate(x):
+    exception = ['Sets',"Liners"]
+    if x["Product Name"] in exception:
+        return " ".join([x["Product Name"].split()[-2],x])
+    else:
+        return x["Product Name"].split()[-1]
+products["Updated Category"]=products.apply(cate,axis=1)
+Food_and_Beverages_Containers=[ 'Bowl Sets', 'Bowls','Containers','Lids','Lunchbox','Packagings','Plate Sets','Plates','Platter Sets', 'Platters']
+Cutlery=['Chopsticks','Knives', 'Spoons', 'Stirrers', 'Straws', 'Tongs', 'Dinnerwares', 'Forks', 'Cups' ,'Cutlery']
+Amenities=['Napkins', 'Towels']
+Films=['Half-Tube Films','Stretch Films','Tube Films']
+Others=[ 'Aprons','Bags','Bin Liners', 'Box Liners', 'Boxes', 'Buds', 'Can Liners','Cards', 'Clamshells', 'Cleaners','Covers', 'Detergent', 'Fresh', 'Gloves', 'Holders','Pads', 'Pouches', 'Sacks', 'Sheets', 'Skewers', 'Sleeves', 'Sticks', 'Storages', 'Tablets', 'Tapes', 'Tissues', 'Toothpicks', 'Trays','Tumblers', 'Wraps']
+def cate_dict(x):
+    if x in Food_and_Beverages_Containers:
+        return "Food and Beverages Containers"
+    elif x in Cutlery:
+        return "Cutlery"
+    elif x in Amenities:
+        return "Amenities"
+    else:
+        return "Others"
+products["Updated Category"]=products["Updated Category"].apply(cate_dict)
 #--------
 #Creating Webapp
 #--------
@@ -200,9 +221,11 @@ elif pages == 'Products Databse':
     head_container = st.container()
     with head_container:
         st.subheader("Product Databse")
-        st.write(products)
-        product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
-        st.subheader(product_name+"\n") 
+        product_category = st.selectbox("Category of Product", options = [x for x in products["Updated Category"].unique if x == x])
+        st.write(products[products["Updated Category"]==product_category])
+        product_name = st.selectbox("Select product", options = [x for x in products[products["Updated Category"]==product_category]["Product Name"] if x == x])
+        st.subheader(product_name+"\n")
+        
         image,description_2 = st.columns(2)
         with image:
             if products.set_index("Product Name")["Photo"].loc[product_name] == products.set_index("Product Name")["Photo"].loc[product_name]:
