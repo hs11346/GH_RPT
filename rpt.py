@@ -209,7 +209,7 @@ elif pages == 'Products Databse':
         image,description_2 = st.columns(2)
         with image:
             if products.set_index("Product Name")["Photo"].loc[product_name] == products.set_index("Product Name")["Photo"].loc[product_name]:
-                st.image(products.set_index("Product Name")["Photo"].loc[product_name],caption = "Image", use_column_width = True)
+                st.image(products.set_index("Product Name")["Photo"].loc[product_name],caption = "Source from company website", use_column_width = True)
             else:
                 st.markdown("No photo available")
         with description_2:
@@ -235,9 +235,7 @@ with st.sidebar:
                 We have recieved your enquiry, and we will get back to you soon!
             
                 Best Regards,
-                GREEN Hospitality
-            
-                ***MOCK AUTOMATED MESSAGE FROM MY PERSONAL ACCOUNT***
+                GREEN Hospitality Responsible Procurement Tool Team               
                 """.format(org))
                 st.markdown("Received, thanks!")
             else:
