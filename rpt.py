@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 # arg1 = API key, arg2 = table key, arg3 = table name
 st.set_page_config(
      page_title="GH_RPT App",
-     layout="wide",
-     initial_sidebar_state="centered",
+     layout="centered",
+     initial_sidebar_state="collapsed",
      menu_items={
          'Get Help': 'https://www.greenhospitality.io',
          'Report a bug': "https://www.greenhospitality.io",
