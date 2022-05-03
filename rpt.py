@@ -214,7 +214,7 @@ elif pages == 'Products Databse':
                 st.markdown("No photo available")
         with description_2:
             st.subheader("Product Description\n")
-            product_data = products.transpose()
+            product_data = products.T
             st.write(product_data)
             #st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
             #st.markdown("\nContact Method:")
