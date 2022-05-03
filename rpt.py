@@ -204,7 +204,7 @@ elif pages == 'Products Databse':
         product_category = st.selectbox("Category of Product", options = [x for x in products["Updated Category"].unique() if x == x])
         st.write(products[products["Updated Category"]==product_category])
         product_name = st.selectbox("Select product", options = [x for x in products[products["Updated Category"]==product_category]["Product Name"] if x == x])
-        st.subheader(product_name+"\n")
+        st.subheader("\n")
         
         image,description_2 = st.columns(2)
         with image:
@@ -214,15 +214,14 @@ elif pages == 'Products Databse':
                 st.markdown("No photo available")
         with description_2:
             st.subheader("Product Description\n")
-            product_data = products.T
-            st.write(product_data)
-            #st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
-            #st.markdown("\nContact Method:")
-            #if products.set_index("Product Name")["Contact email"].loc[product_name] == products.set_index("Product Name")["Contact email"].loc[product_name]:
-                #st.markdown(products.set_index("Product Name")["Contact email"].loc[product_name])
-                #email = products.set_index("Product Name")["Contact email"].loc[product_name]
-            #else:
-                #st.markdown("Information unavailable")
+          
+            st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
+            st.markdown("\nContact Method:")
+            if products.set_index("Product Name")["Contact email"].loc[product_name] == products.set_index("Product Name")["Contact email"].loc[product_name]:
+                st.markdown(products.set_index("Product Name")["Contact email"].loc[product_name])
+                email = products.set_index("Product Name")["Contact email"].loc[product_name]
+            else:
+                st.markdown("Information unavailable")
                 
 with st.sidebar:
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
