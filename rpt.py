@@ -11,7 +11,16 @@ import re
 import seaborn as sns
 import matplotlib.pyplot as plt
 # arg1 = API key, arg2 = table key, arg3 = table name
-
+st.set_page_config(
+     page_title="GH_RPT App",
+     layout="wide",
+     initial_sidebar_state="expanded",
+     menu_items={
+         'Get Help': 'https://www.greenhospitality.io',
+         'Report a bug': "https://www.greenhospitality.io",
+         'About': "Responsible Procurement Tool webapp developed by Harry"
+     }
+ )
 
 def tableX():
     return py.Table(st.secrets["api_key"],st.secrets["table_key"],"List of Suppliers")
@@ -157,16 +166,7 @@ products["Updated Category"]=products["Updated Category"].apply(cate_dict)
 #--------
 #Creating Webapp
 #--------
-st.set_page_config(
-     page_title="GH_RPT App",
-     layout="wide",
-     initial_sidebar_state="expanded",
-     menu_items={
-         'Get Help': 'https://www.greenhospitality.io',
-         'Report a bug': "https://www.greenhospitality.io/",
-         'About': "Responsible Procurement Tool webapp developed by Harry"
-     }
- )
+
 
 header = st.container()
 with header:
