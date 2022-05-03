@@ -214,7 +214,7 @@ elif pages == 'Products Databse':
                 st.markdown("No photo available")
         with description_2:
             st.subheader("Product Description\n")
-            product_data = products.set_index("Product Name").loc[product_name]
+            product_data = products[products["Product Name"]==product_name]
             st.write(pd.DataFrame(product_data))
             #st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
             #st.markdown("\nContact Method:")
