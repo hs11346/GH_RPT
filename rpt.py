@@ -214,20 +214,15 @@ elif pages == 'Products Databse':
                 st.markdown("No photo available")
         with description_2:
             st.subheader("Product Description\n")
-            st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
-            st.markdown("\nContact Method:")
-            if products.set_index("Product Name")["Contact email"].loc[product_name] == products.set_index("Product Name")["Contact email"].loc[product_name]:
-                st.markdown(products.set_index("Product Name")["Contact email"].loc[product_name])
-                email = products.set_index("Product Name")["Contact email"].loc[product_name]
-                quick_container = st.container()
-                with quick_container:
-                    st.header("Quick Contact")
-                    org = st.text_input("Your Organisation")
-                    email = st.text_input("Your Receiving Email")
-                    message = st.text_input("Your Message")
-            
-            else:
-                st.markdown("Information unavailable")
+            product_data = products.set_index("Product Name").loc[product_name]
+            st.write(product_data)
+            #st.markdown("This product is produced by "+products.set_index("Product Name")["Company"].loc[product_name])
+            #st.markdown("\nContact Method:")
+            #if products.set_index("Product Name")["Contact email"].loc[product_name] == products.set_index("Product Name")["Contact email"].loc[product_name]:
+                #st.markdown(products.set_index("Product Name")["Contact email"].loc[product_name])
+                #email = products.set_index("Product Name")["Contact email"].loc[product_name]
+            #else:
+                #st.markdown("Information unavailable")
                 
 with st.sidebar:
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
