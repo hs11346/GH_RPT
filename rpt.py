@@ -195,7 +195,7 @@ if pages == "Supplier Database":
         st.markdown("\nProduct Categories include:")
         st.markdown("* "+"\n* ".join(supplier["Type of Products"].loc[comp]))
     
-regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
   
 elif pages == 'Products Databse':
     head_container = st.container()
@@ -230,22 +230,23 @@ elif pages == 'Products Databse':
                 st.markdown("Information unavailable")
                 
 with st.sidebar:
-        st.title("Contact Us")
-        org = st.text_input("Your Organisation")
-        email = st.text_input("Email")
-        message = st.text_input("Your Message")
-        send_button = st.button("Send")
-        if send_button:
-            if re.fullmatch(regex, email):
-                user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets['pw'])
-                user.send(to=email,subject = 'Enquiry Recieved (noreply)', contents = """
-                To {},
-                We have recieved your enquiry, and we will get back to you soon!
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    st.title("Contact Us")
+    org = st.text_input("Your Organisation")
+    email = st.text_input("Email")
+    message = st.text_input("Your Message")
+    send_button = st.button("Send")
+    if send_button:
+        if re.fullmatch(regex, email):
+            user = yg.SMTP(user='hbgwjti@gmail.com',password = st.secrets['pw'])
+            user.send(to=email,subject = 'Enquiry Recieved (noreply)', contents = """
+            To {},
+            We have recieved your enquiry, and we will get back to you soon!
             
-                Best Regards,
-                GREEN Hospitality Responsible Procurement Tool Team               
-                """.format(org))
-                st.markdown("Received, thanks!")
-            else:
-                st.markdown("Error: Invalid Email")                
+            Best Regards,
+            GREEN Hospitality Responsible Procurement Tool Team               
+            """.format(org))
+            st.markdown("Received, thanks!")
+         else:
+            st.markdown("Error: Invalid Email")                
 
