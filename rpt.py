@@ -192,7 +192,9 @@ if pages == "Supplier Database":
                 st.markdown("Received, thanks!")
             else:
                 st.markdown("Error: Invalid Email")
-        
+elif pages == 'Products Databse':
+    st.write(products)
+
 
 
     
