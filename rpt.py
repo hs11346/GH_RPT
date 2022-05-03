@@ -194,7 +194,8 @@ if pages == "Supplier Database":
                 st.markdown("Error: Invalid Email")
 elif pages == 'Products Databse':
     st.write(products)
-
+    product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
+    st.title(product_name)
 
 
     
