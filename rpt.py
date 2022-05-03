@@ -196,8 +196,9 @@ elif pages == 'Products Databse':
     st.write(products)
     product_name = st.selectbox("Select product", options = [x for x in products["Product Name"] if x == x])
     st.title(product_name)
-    st.markdown("![Alt Text]({})".format(products.set_index("Product Name")["Photo"].loc[product_name]))
-
+    #st.markdown("![Alt Text]({})".format(products.set_index("Product Name")["Photo"].loc[product_name]))
+    st.image(products.set_index("Product Name")["Photo"].loc[product_name]
+                ,caption = "Image")
 
     
 
