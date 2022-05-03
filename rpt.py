@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(
      page_title="GH_RPT App",
      layout="wide",
-     initial_sidebar_state="expanded",
+     initial_sidebar_state="centered",
      menu_items={
          'Get Help': 'https://www.greenhospitality.io',
          'Report a bug': "https://www.greenhospitality.io",
